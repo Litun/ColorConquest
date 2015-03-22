@@ -32,8 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>ColorConquestIco.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ColorConquest.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Compile Include="Camera.cs" />
     <Compile Include="ColorButton.cs" />
@@ -68,9 +72,9 @@
       <Link>SDL.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="ColorConquestIco.ico" />
     <Content Include="Icon.ico" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Content\0-1.xnb" />
     <None Include="Content\0-2.xnb" />
