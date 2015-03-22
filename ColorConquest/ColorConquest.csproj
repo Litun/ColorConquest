@@ -35,9 +35,17 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Camera.cs" />
+    <Compile Include="ColorButton.cs" />
+    <Compile Include="Field.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="GeneralButton.cs" />
+    <Compile Include="InfoScreen.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="MenuButton.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Triangle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
@@ -62,8 +70,39 @@
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Content\" />
+    <None Include="Content\0-1.xnb" />
+    <None Include="Content\0-2.xnb" />
+    <None Include="Content\0-3.xnb" />
+    <None Include="Content\1-1.xnb" />
+    <None Include="Content\1-2.xnb" />
+    <None Include="Content\1-3.xnb" />
+    <None Include="Content\2-1.xnb" />
+    <None Include="Content\2-2.xnb" />
+    <None Include="Content\2-3.xnb" />
+    <None Include="Content\3-1.xnb" />
+    <None Include="Content\3-2.xnb" />
+    <None Include="Content\3-3.xnb" />
+    <None Include="Content\4-1.xnb" />
+    <None Include="Content\4-2.xnb" />
+    <None Include="Content\4-3.xnb" />
+    <None Include="Content\5-1.xnb" />
+    <None Include="Content\5-2.xnb" />
+    <None Include="Content\5-3.xnb" />
+    <None Include="Content\6-1.xnb" />
+    <None Include="Content\6-2.xnb" />
+    <None Include="Content\6-3.xnb" />
+    <None Include="Content\Exit-1.xnb" />
+    <None Include="Content\Exit-2.xnb" />
+    <None Include="Content\Lose.xnb" />
+    <None Include="Content\ScoreFont.xnb" />
+    <None Include="Content\Start-1.xnb" />
+    <None Include="Content\Start-2.xnb" />
+    <None Include="Content\Start-3.xnb" />
+    <None Include="Content\untouch.xnb" />
+    <None Include="Content\white.xnb" />
+    <None Include="Content\Win.xnb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

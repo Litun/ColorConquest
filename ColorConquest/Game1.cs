@@ -16,14 +16,27 @@ namespace ColorConquest
     /// </summary>
     public class Game1 : Game
     {
+        public static SpriteBatch spriteBatch;
+
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+
+        public BasicEffect effect;
+        // VertexBuffer buffer;
+
+        public Field field;
+        Camera camera;
+        public ColorButton[] colorButtons;
+        Menu menu;
 
         public Game1()
             : base()
         {
+
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            graphics.IsFullScreen = true;
         }
 
         /// <summary>
@@ -34,9 +47,33 @@ namespace ColorConquest
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
 
             base.Initialize();
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            effect = new BasicEffect(GraphicsDevice);
+            field = new Field(this);
+            Components.Add(field);
+            camera = new Camera(this, new Vector3(0, 0, 3f),
+                Vector3.Zero, Vector3.Up);
+            Components.Add(camera);
+
+            colorButtons = new ColorButton[7];
+
+            for (int i = 0; i < colorButtons.Length; i++)
+            {
+                colorButtons[i] = new ColorButton(this, 0.04f, 0.0625f + 0.125f * i, new ColorButtonClick(field.Go), i);
+                Components.Add(colorButtons[i]);
+            }
+
+            menu = new Menu(this);
+            Components.Add(menu);
+            Components.Add(menu.start);
+            Components.Add(menu.exit);
+
+            //buffer = new VertexBuffer(GraphicsDevice, VertexPositionColor.VertexDeclaration, 3, BufferUsage.WriteOnly);
+
+
+            effect.VertexColorEnabled = true;
         }
 
         /// <summary>
@@ -46,7 +83,7 @@ namespace ColorConquest
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -70,6 +107,20 @@ namespace ColorConquest
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            if (field.end != 0)
+            {
+                for (int i = 0; i < colorButtons.Length; i++)
+                    colorButtons[i].isActive = false;
+                field.isActive = false;
+
+                if (field.end == -1)
+                    Components.Add(new InfoScreen(this, false));
+                else if (field.end == 1)
+                    Components.Add(new InfoScreen(this, true));
+                field.end = 0;
+            }
+
+
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -81,9 +132,20 @@ namespace ColorConquest
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
+
+
+
+            /*     foreach (EffectPass pass in effect.CurrentTechnique.Passes)
+                 {
+                     pass.Apply();
+                     GraphicsDevice.DrawUserPrimitives<VertexPositionColor>(
+                         PrimitiveType.TriangleList, field.array, 0, field.array.Length / 3);
+                 }*/
 
             base.Draw(gameTime);
         }
