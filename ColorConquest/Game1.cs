@@ -36,7 +36,7 @@ namespace ColorConquest
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
         }
 
         /// <summary>
@@ -74,6 +74,8 @@ namespace ColorConquest
 
 
             effect.VertexColorEnabled = true;
+            graphics.IsFullScreen = true;
+            IsMouseVisible = true;
         }
 
         /// <summary>
