@@ -24,6 +24,8 @@ namespace ColorConquest
         public Menu(Game1 g)
             : base(g)
         {
+            LoadContent();
+            Initialize();
         }
 
         void Start()

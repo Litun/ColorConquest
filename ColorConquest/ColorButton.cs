@@ -40,7 +40,7 @@ namespace ColorConquest
             buttonClick = bClick;
 
             textures = new Texture2D[4];
-            
+            LoadContent();
             rectangle = new Rectangle((int)(x * GraphicsDevice.Viewport.Width), (int)(y *1.0125* GraphicsDevice.Viewport.Height),
                 GraphicsDevice.Viewport.Width/10, GraphicsDevice.Viewport.Height/10);
         }

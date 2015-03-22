@@ -93,6 +93,7 @@ namespace ColorConquest
             };
             #endregion
             */
+            LoadContent();
         }
 
         void MakeStartTriangle()
